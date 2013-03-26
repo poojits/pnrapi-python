@@ -32,7 +32,7 @@ class PNRAPI:
 		ticket_type_re = re.compile("\(.*\)")
 		enq_heading = soup.find("td",{"class":"Enq_heading"}).text
 		ticket_type = str(ticket_type_re.findall(enq_heading)[0])
-		ticket_type.lstrip("\(").rstrip("\)")
+		ticket_type = ticket_type.lstrip("\(").rstrip("\)")
 		self.response_json["ticket_type"] = ticket_type
 		#get tables
 		tables = soup.findAll("table",{"class":"table_border"})
@@ -44,7 +44,7 @@ class PNRAPI:
 		self.response_json["train_name"] = str(journey_cols[1].text).strip()
 		#get boarding_date
 		boarding_date = str(journey_cols[2].text).split("-")
-		boarding_date = boarding_date[0]+boarding_date[1].strip()+boarding_date[2]
+		boarding_date = boarding_date[0]+"-"+boarding_date[1].strip()+"-"+boarding_date[2]
 		self.response_json["boarding_date"] = boarding_date
 		#get from
 		self.response_json["from"] = str(journey_cols[3].text)
