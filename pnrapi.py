@@ -47,13 +47,13 @@ class PNRAPI:
 		boarding_date = boarding_date[0]+"-"+boarding_date[1].strip()+"-"+boarding_date[2]
 		self.response_json["boarding_date"] = boarding_date
 		#get from
-		self.response_json["from"] = str(journey_cols[3].text)
+		self.response_json["from"] = str(journey_cols[3].text).strip()
 		#get to
-		self.response_json["to"] = str(journey_cols[4].text)
+		self.response_json["to"] = str(journey_cols[4].text).strip()
 		#get reserved_upto
-		self.response_json["reserved_upto"] = str(journey_cols[5].text)
+		self.response_json["reserved_upto"] = str(journey_cols[5].text).strip()
 		#get boarding_point
-		self.response_json["boarding_point"] = str(journey_cols[6].text)
+		self.response_json["boarding_point"] = str(journey_cols[6].text).strip()
 		#get class
 		self.response_json["class"] = str(journey_cols[7].text).strip()
 
